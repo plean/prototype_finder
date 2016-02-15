@@ -2,6 +2,12 @@
 #include <unistd.h>
 #include "get_next_line.h"
 
+/*
+** get_next_line is a function that return the next line (no shit sherlock)
+** of the given file descriptor.
+** It was not made by me but by one of my friend Bailly Jamy
+*/
+
 char	*gnl_strcpy(char *src, char c, int len_line)
 {
   int	i;

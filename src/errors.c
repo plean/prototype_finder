@@ -11,7 +11,7 @@ void	file_errors(char *str)
 {
   int	test;
 
-  test = open(str, O_DIRECTORY);
+  test = open(str, O_DIRECTORY); /* Check if the string matches to a directory. */
   if (test != -1)
     {
       printf("%s: Is a directory\n", str);
@@ -22,7 +22,7 @@ void	file_errors(char *str)
   test = open(str, O_RDONLY);
   if (errno == EACCES || errno == ENOENT)
     {
-      printf("%s: No such file or directory\n", str);
+      printf("%s: No such file or directory\n", str); /* Check if the string exist. */
       close(test);
       exit(0);
     }
