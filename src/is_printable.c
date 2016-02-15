@@ -19,14 +19,14 @@ int	test_co(char *str)
 
 int	is_printable(char *str, int z)
 {
-	      int	i;
-	      int	k = 0;
+  int	i;
+  int	k = 0;
 
-	      if (str[0] == 0)
-		return (z);
+  if (str[0] == 0)
+    return (z);
   if (!(test_co(str) && is_struct(str)))
-      k = 1;
-	  i = -1;
+    k = 1;
+  i = -1;
   while (str[++i])
     {
       if (str[i] == '{')
@@ -35,15 +35,15 @@ int	is_printable(char *str, int z)
 	{
 	  printf("%c", str[i]);
 	  if (str[i] == ')' && k == 0)
-			    {
-			    printf(";\n");
-			      k = 1;
-			  }
-			    }
+	    {
+	      printf(";\n");
+	      k = 1;
+	    }
+	}
       if (str[i] == '}')
 	z--;
     }
   if (z == 0 && str[0] != '}' && k == 0)
     printf("\n");
-	  return (z);
+  return (z);
 }
