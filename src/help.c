@@ -7,3 +7,10 @@ void	my_show_error()
   printf("\t-v, --version\tDisplay program version information\n");
   printf("\n");
 }
+
+void	my_show_version()
+{
+  printf("point_epee_maker 0.8\n");
+  printf("\n");
+  printf("Written by Jean Plancher.\n");
+}

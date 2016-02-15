@@ -22,6 +22,7 @@ int	main(int ac, char **av)
   int	*fd = NULL;
 
   my_errors(ac);
+  my_flags(av);
   fd = my_init_fd(fd, ac, av);
   while (*fd)
     print_protoss(*fd++);
