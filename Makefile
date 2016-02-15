@@ -8,7 +8,10 @@ NAME  	= point_epee_maker
 
 SRCS   	= main.c \
 	  src/errors.c \
-	  src/help.c
+	  src/help.c \
+		src/init.c \
+		src/is_printable.c \
+		src/get_next_line.c
 
 OBJS   	= $(SRCS:.c=.o)
 
