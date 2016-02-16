@@ -4,7 +4,7 @@ RM     	= rm -f
 
 CFLAGS 	+= -W -Wall -Wextra -pedantic -I./include
 
-NAME  	= point_epee_maker
+NAME  	= prototype_finder
 
 SRCS   	= main.c \
 	  src/errors.c \
