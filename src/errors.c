@@ -1,5 +1,4 @@
 #include <unistd.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -7,7 +6,7 @@
 #include <errno.h>
 #include "maker.h"
 
-void	file_errors(char *str)
+void	check_file(const char *str)
 {
   int	test;
 
@@ -16,7 +15,7 @@ void	file_errors(char *str)
     {
       printf("%s: Is a directory\n", str);
       close(test);
-      exit(0);
+      exit(1);
     }
   close(test);
   test = open(str, O_RDONLY);
@@ -24,17 +23,7 @@ void	file_errors(char *str)
     {
       printf("%s: No such file or directory\n", str); /* Check if the string exist. */
       close(test);
-      exit(0);
+      exit(1);
     }
   close(test);
-}
-
-
-void	my_errors(int ac)
-{
-  if (ac == 1)
-    {
-      my_show_error();
-      exit (0);
-    }
 }

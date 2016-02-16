@@ -1,37 +1,35 @@
 #include <stdio.h>
 #include <string.h>
 
-int	is_struct(char *str) /* Test if it's the beginning of a structure */
+static int	is_struct_or_static(const char *str) /* Test if it's a structure or a static. */
 {
-  if (!(strncmp(str, "struct ", 6)))
-    return (0);
-  return (1);
+  return (strncmp(str, "struct ", 6) && strncmp(str, "static ", 6));
 }
 
-int	test_co(char *str) /* Test if it's a comment. */
+static int	is_comment(const char *str) /* Test if it's a comment. */
 {
-  return ((str[0] == '/' && str[1] == '*') ||
+  return (!((str[0] == '/' && str[1] == '*') ||
 	  (str[0] == '*' && str[1] == '*') ||
 	  (str[0] == '*' && str[1] == '/') ||
 	  (str[0] == '/' && str[1] == '/') ||
-	  (str[0] == '#')) ? (0) : (1);
+	  (str[0] == '#')));
 }
 
-int	is_printable(char *str, int z)
+int	is_printable(const char *str, int z)
 {
   int	i;
   int	k = 0;
 
   if (str[0] == 0)
     return (z);
-  if (!(test_co(str) && is_struct(str)))
+  if (!(is_comment(str) && is_struct_or_static(str)))
     k = 1;
   i = -1;
   while (str[++i])
     {
       if (str[i] == '{') /* Basic parsing that increment if it find a '{' */
 	z++;
-      if (z == 0 && k == 0 && str[i] != ';')
+      if (z == 0 && k == 0 && str[i] != ';' && str[i] != '\n')
 	{
 	  printf("%c", str[i]);
 	  if (str[i] == ')' && k == 0) /* Check if it's the end of a prototype. */
@@ -43,7 +41,7 @@ int	is_printable(char *str, int z)
       if (str[i] == '}') /* and decrement if it find a '}' */
 	z--;
     }
-  if (z == 0 && str[0] != '}' && k == 0) /* Only do that if the prototype is on multiple lines. */
+  if (z == 0 && str[0] != '}' && k == 0 && str[0] != '\n') /* Only do that if the prototype is on multiple lines. */
     printf("\n");
   /*
   ** The returned value is the number of '{' minus the number of '}' encountered.
