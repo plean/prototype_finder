@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void	my_show_error()
+void	my_show_error(void)
 {
   printf("Usage: ./prototype_finder [FILE [FILE]...]\n\n");
   printf("\t-h, --help\tDisplay this help and exit\n");
@@ -8,7 +8,7 @@ void	my_show_error()
   printf("\n");
 }
 
-void	my_show_version()
+void	my_show_version(void)
 {
   printf("prototype_finder 1.0\n");
   printf("\n");

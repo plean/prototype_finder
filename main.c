@@ -34,7 +34,7 @@ static	void	print_prototype(const char *file_names)
     free(line);
 }
 
-static void	my_flags(int argc, char **argv)
+static void	my_flags(int argc, const char **argv)
 {
   int	i;
 
@@ -53,7 +53,7 @@ static void	my_flags(int argc, char **argv)
     }
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, const char **argv)
 {
   check_argument_count(argc); /* Check if the number of parameters is exact. */
   my_flags(argc, argv); /* Check if some basic flags are used. */

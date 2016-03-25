@@ -5,7 +5,7 @@
 #include <fcntl.h>
 #include "maker.h"
 
-int	open_files(FILE **files, int file_count, char **file_names)
+int	open_files(FILE **files, int file_count, const char **file_names)
 {
   int	i;
 
